@@ -1,0 +1,16 @@
+<?php 
+
+
+    if(!isset($_SESSION['user'])){
+        echo "<script>alert('login terlebih dahulu')</script>";
+        echo "<script>location='login'</script>";
+    }
+
+    $id_login = $_SESSION['user'];
+    
+    $login_check = $koneksi->query("SELECT * FROM pegawai WHERE id_pegawai='$id_login' ");
+    if(!$login_check->num_rows){
+        echo "<script>alert('Sessin is not valid')</script>";
+        echo "<script>location='login'</script>";
+    }
+    $obj_login = $login_check->fetch_object();
