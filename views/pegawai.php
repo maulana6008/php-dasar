@@ -4,9 +4,7 @@
         <a class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" href="#" data-toggle="modal" data-target="#refuelmodal">
         <i class="fas fa-solid fa-plus"></i> Add</a>
     </a>
-        
 </div>
-
 
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
@@ -44,13 +42,13 @@
                                 <img class="img-profile" src="assets/img/<?= $pgw->foto ?>" alt="" width="150px">
                             </td>
                             <td>
-                                <a href="edit/pegawai/<?= $pgw->id_pegawai ?>" class="btn btn-secondary">
+                                <a href="edit/pegawai/<?= $pgw->id ?>" class="btn btn-secondary">
                                     Edit
                                 </a>
                             </td>
                             <td>
                                 <form action="" method="post">
-                                    <input name="_id" type="hidden" value="<?= $pgw->id_pegawai ?>" />
+                                    <input name="_id" type="hidden" value="<?= $pgw->id ?>" />
                                     <button class="btn btn-danger" type="submit" name="delete">
                                         Delete
                                     </button>
@@ -88,6 +86,10 @@ aria-hidden="true">
                         <input type="email" class="form-control" name="email" id="email">
                     </div>
                     <div class="col-12 mt-3">
+                        <label for="pass">Password</label>
+                        <input type="password" class="form-control" name="pass" id="pass">
+                    </div>
+                    <div class="col-12 mt-3">
                         <label for="photo">Photo</label>
                         <input type="file" class="form-control" name="photo" id="photo">
                     </div>
@@ -96,11 +98,9 @@ aria-hidden="true">
                     </div>
                 </div>
             </form>
-            
         </div>
         <div class="modal-footer">
             <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-            
         </div>
     </div>
 </div>

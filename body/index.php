@@ -37,15 +37,24 @@
       <li class="nav-item">
           <a class="nav-link" href="<?= $redirect ?>refuel">
               <i class="fas fa-solid fa-gas-pump"></i>
+              <?php if($type_login == "user"): ?>
+              <span>Pembelian Bensin</span></a>
+              <?php else: ?>
               <span>Refuel Users</span></a>
+              <?php endif; ?>
       </li>
 
       <li class="nav-item">
           <a class="nav-link" href="<?= $redirect ?>topup">
               <i class="fas fa-solid fa-money-bill"></i>
+              <?php if($type_login == "user"): ?>
+              <span>History Topup</span></a>
+              <?php else: ?>
               <span>Top Up Users</span></a>
+              <?php endif; ?>
       </li>
-
+      
+      <?php if($type_login != 'user'): ?>
       <li class="nav-item">
           <a class="nav-link" href="<?= $redirect ?>bensin">
               <i class="fas fa-solid fa-gas-pump"></i>
@@ -57,13 +66,15 @@
               <i class="fas fa-solid fa-user"></i>
           <span>Users</span></a>
       </li>
+      <?php endif; ?>
 
+      <?php if($type_login == 'admin'): ?>
       <li class="nav-item">
           <a class="nav-link" href="<?= $redirect ?>pegawai">
               <i class="fas fa-solid fa-user"></i>
           <span>Pegawai</span></a>
       </li>
-
+      <?php endif; ?>
       <!-- Divider -->
       <hr class="sidebar-divider">
 
@@ -255,17 +266,9 @@
                 </a>
                 <!-- Dropdown - User Information -->
                 <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                  <a class="dropdown-item" href="#">
+                  <a class="dropdown-item" href="profile">
                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                     Profile
-                  </a>
-                  <a class="dropdown-item" href="#">
-                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                    Settings
-                  </a>
-                  <a class="dropdown-item" href="#">
-                    <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                    Activity Log
                   </a>
                   <div class="dropdown-divider"></div>
                   <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">

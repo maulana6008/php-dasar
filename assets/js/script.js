@@ -7,7 +7,6 @@ imgU.style.backgroundImage = `url(${imgSrc})`
 imgU.style.backgroundRepeat = `no-repeat`
 imgU.style.backgroundPosition = `center center`
 imgU.style.backgroundSize = `cover`
-
 let gases = document.querySelector('#gases')
 let gas = document.querySelector('#gas');
 let price = document.querySelector('.price')

@@ -1,5 +1,9 @@
 <?php
 
+if($type_login == 'user'){
+    echo '<script>alert("Maaf! Anda tidak memiliki akses");</script>';
+    echo "<script>location='".$db."dashboard'</script>";
+}
 if(count($getUrl) < 3){
     echo "<script>location='dashboard'</script>";
 }
@@ -35,7 +39,7 @@ if($edit == 'gas'){
         echo "<script>location='../../user'</script>";
     }
 }elseif($edit == 'pegawai'){
-    $pegawai_e = $koneksi->query("SELECT * FROM pegawai WHERE id_pegawai='$id' ");
+    $pegawai_e = $koneksi->query("SELECT * FROM pengelola WHERE id='$id' ");
     if($pegawai_e->num_rows <= 0){
         echo "<script>alert('Pegawai is unavailable')</script>";
         echo "<script>location='../../pegawai'</script>";
@@ -148,10 +152,11 @@ if(isset($_POST['pegawai_edit'])){
     $nama = $_POST['nama'];
     $email = $_POST['email'];
     $photo = $_FILES['photo']['name'];
+    $pass = md5($_POST['pass']);
     $tmp_name = $_FILES['photo']['tmp_name'];
     $type = substr($_FILES['photo']['type'],0,5);
-    $checker = $koneksi->query("SELECT * FROM pegawai WHERE email='$email' and id_pegawai='$id'");
-    $checker1 = $koneksi->query("SELECT * FROM pegawai WHERE email='$email'");
+    $checker = $koneksi->query("SELECT * FROM pengelola WHERE email='$email' and id='$id'");
+    $checker1 = $koneksi->query("SELECT * FROM pengelola WHERE email='$email'");
     if($checker->num_rows >= 1 or $checker1->num_rows <= 0){
         if($photo){
             $ext = explode(".",$_FILES['photo']['name'])[1];
@@ -160,8 +165,11 @@ if(isset($_POST['pegawai_edit'])){
                 $destination_path = getcwd().DIRECTORY_SEPARATOR;
                 $target_path = $destination_path . "assets/img/" . basename( $file_name );
                 if(move_uploaded_file($tmp_name, $target_path)){
-                    $update = $koneksi->query("UPDATE pegawai SET nama='$nama',email='$email',foto='$file_name'
-                    WHERE id_pegawai='$id'");
+                    if($pass){
+                        $update = $koneksi->query("UPDATE pengelola SET nama='$nama',email='$email',foto='$file_name',pass='$pass' WHERE id='$id'");
+                    }else{
+                        $update = $koneksi->query("UPDATE pengelola SET nama='$nama',email='$email',foto='$file_name' WHERE id='$id'");
+                    }
                     if($update){
                         echo "<script>alert('Update Successfuly')</script>";
                         echo '<script>location="../../pegawai"</script>';
@@ -175,8 +183,11 @@ if(isset($_POST['pegawai_edit'])){
                 echo "<script>alert('Format photo is not valid')</script>";
             }
         }else{
-            $update = $koneksi->query("UPDATE pegawai SET nama='$nama', email='$email'
-            WHERE id_pegawai='$id'");
+            if($pass){
+                $update = $koneksi->query("UPDATE pengelola SET nama='$nama',email='$email',pass='$pass' WHERE id='$id'");
+            }else{
+                $update = $koneksi->query("UPDATE pengelola SET nama='$nama',email='$email' WHERE id='$id'");
+            }
             if($update){
                 echo "<script>alert('Update Successfuly')</script>";
                 echo '<script>location="../../pegawai"</script>';

@@ -17,6 +17,8 @@
         include 'views/edit.php';
     }else if ($url=='logout') {
         include 'logics/logout.php';
+    }else if ($url=='profile') {
+        include 'views/profile.php';
     }else{
         echo "Error 404 : Page Not Found";
     }

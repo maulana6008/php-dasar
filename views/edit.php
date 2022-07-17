@@ -134,7 +134,7 @@
                         $pgw = $pegawai_e->fetch_object();
                 ?>
                 <div class="col-12">
-                    <div class="alert alert-warning">ads you don't want to change the photo, don't upload it</div>
+                    <div class="alert alert-warning">if you don't want to change the photo, don't upload it</div>
                 </div>
                 <form action="" method="post" enctype="multipart/form-data">
                     <div class="col-12">
@@ -146,6 +146,10 @@
                         <label for="email">Email</label>
                         <input type="email" name="email" class="form-control" 
                         value="<?= $pgw->email ?>">
+                    </div>
+                    <div class="col-12 mt-3">
+                        <label for="pass">Password</label>
+                        <input type="pass" name="pass" class="form-control" placeholder="Masukan password baru">
                     </div>
                     <div class="col-12 mt-3">
                         <label for="photo">photo</label>

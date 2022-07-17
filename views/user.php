@@ -91,6 +91,10 @@
                             <input type="email" class="form-control" name="email" id="email">
                         </div>
                         <div class="col-12 mt-3">
+                            <label for="pass">Password</label>
+                            <input type="password" class="form-control" name="pass" id="pass">
+                        </div>
+                        <div class="col-12 mt-3">
                             <label for="photo">Photo</label>
                             <input type="file" class="form-control" name="photo" id="photo">
                         </div>

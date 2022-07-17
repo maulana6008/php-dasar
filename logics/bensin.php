@@ -1,4 +1,9 @@
 <?php   
+    if($type_login == 'user'){
+        echo "oke";
+        echo '<script>alert("Maaf! Anda tidak memiliki akses");</script>';
+        echo "<script>location='".$db."dashboard'</script>";
+    }
     $bensin = $koneksi->query("SELECT * FROM bensin");
     if(isset($_POST['add'])){
         $gas_type = $_POST['type'];

@@ -1,15 +1,20 @@
 <?php 
 
+if($type_login == 'user'){
+    echo '<script>alert("Maaf! Anda tidak memiliki akses");</script>';
+    echo "<script>location='".$db."dashboard'</script>";
+}
 $user = $koneksi->query("SELECT * FROM users");
 if(isset($_POST['add'])){
     $nama = $_POST['nama'];
     $email = $_POST['email'];
+    $pass = md5($_POST['pass']);
     $photo = $_FILES['photo']['name'];
     $type = substr($_FILES['photo']['type'],0,5);
     $tmp_name = $_FILES['photo']['tmp_name'];
     $checker = $koneksi->query("SELECT * FROM users WHERE email='$email'");
-    if(!$nama or !$email){
-        echo "<script>alert('Email and Name is Required')</script>";
+    if(!$nama or !$email or !$pass){
+        echo "<script>alert('All are Required')</script>";
     }else{
 
         if($checker->num_rows >= 1){
@@ -27,6 +32,7 @@ if(isset($_POST['add'])){
                             '".$nama."',
                             '".$file_name."',
                             '".$email."',
+                            '".$pass."',
                             '0'
                         )");
                         if($insert){
@@ -47,6 +53,7 @@ if(isset($_POST['add'])){
                     '".$nama."',
                     '',
                     '".$email."',
+                    '".$pass."',
                     '0'
                 )");
                 if($insert){

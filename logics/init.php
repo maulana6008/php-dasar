@@ -16,7 +16,7 @@
     if($url != "login"){
         include 'logics/sesi.php';
     }
-    
+
     if ($url=='dashboard' || $url=='') {
         include 'logics/dashboard.php';
     }else if ($url=='bensin') {
@@ -29,8 +29,9 @@
         include 'logics/top_up.php';
     }else if ($url=='user') {
         include 'logics/user.php';
-    }
-    else if ($url=='edit') {
+    }else if ($url=='edit') {
         include 'logics/edit.php';
+    }else if ($url=='profile') {
+        include 'logics/profile.php';
     }
 ?>

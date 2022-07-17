@@ -17,6 +17,13 @@
                                     <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
                                 </div>
                                 <form class="user" method="post" action="">
+                                    <div class="form-group mb-4">
+                                        <select name="tipe" id="tipe" class="form-control">
+                                            <option value="admin">Admin</option>
+                                            <option value="pegawai">Pegawai</option>
+                                            <option value="user">User</option>
+                                        </select>
+                                    </div>  
                                     <div class="form-group">
                                         <input type="email" class="form-control form-control-user"
                                             id="exampleInputEmail" aria-describedby="emailHelp"
